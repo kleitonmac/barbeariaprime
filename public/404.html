@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+      // Redireciona para a página inicial em caso de 404
+      sessionStorage.redirect = location.href;
+      location.replace('/');
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <h1>Página não encontrada</h1>
+      <p>Redirecionando para a página inicial...</p>
+      <a href="/">Clique aqui se não for redirecionado</a>
+    </noscript>
+  </body>
+</html>

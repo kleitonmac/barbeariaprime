@@ -1,0 +1,3 @@
+# Ignorar pasta api - serverless functions do Vercel
+api/
+
