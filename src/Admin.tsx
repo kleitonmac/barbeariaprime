@@ -24,7 +24,7 @@ function Admin() {
   });
 
   // Senha do admin - em produção, use environment variables
-  const ADMIN_PASSWORD = 'prime2025#';
+  const ADMIN_PASSWORD = 'novoestilo2025#';
 
   useEffect(() => {
     if (isAuthenticated) {
