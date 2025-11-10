@@ -841,7 +841,7 @@ function App() {
             📞 (27) 99727-6019
           </p>
           <div className="flex justify-center space-x-8">
-            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+            <a href="https://www.instagram.com/novoestilobarbeariaes/" target="_blank" rel="noreferrer">
               <Instagram className="h-8 w-8 text-amber-500 hover:text-amber-600 transition" />
             </a>
             <a href="https://wa.me/5527997276019" target="_blank" rel="noreferrer">
@@ -908,7 +908,7 @@ function App() {
           <div className="mt-auto pt-6">
             <div className="flex justify-center space-x-6 mb-4">
               <a 
-                href="https://www.instagram.com/" 
+                href="https://www.instagram.com/novoestilobarbeariaes/" 
                 target="_blank" 
                 rel="noreferrer"
                 className="p-3 hover:bg-zinc-800 rounded-lg transition"
