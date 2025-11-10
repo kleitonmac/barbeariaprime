@@ -551,12 +551,12 @@ function App() {
           <div className="relative z-10 container mx-auto px-6 h-[calc(100vh-88px)] flex items-center">
             <div className="max-w-2xl">
               <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                Mais que aparência.
+                Tradição no corte, atitude no estilo.
                 <br />
-                É atitude Prime
+                Bem-vindo à Barbearia Novo Estilo!
               </h1>
               <p className="text-lg md:text-xl mb-8 text-gray-300">
-                Seu estilo merece o toque Prime: tradição, precisão e sofisticação.
+                Agende seu horário online e transforme seu visual com a gente!
               </p>
               <a 
                 href="#booking" 
