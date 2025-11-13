@@ -468,7 +468,7 @@ function Admin() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-3">
-              <img src='/logo.png' className="h-10 w-10 text-amber-500 bg-amber-500" />
+              <img src='/logoo.png' className="h-10 w-10 text-amber-500 bg-amber-500" />
               <div>
                 <h1 className="text-2xl font-bold">Painel Admin</h1>
                 <p className="text-white text-sm">Gerencie os agendamentos e finanças</p>
