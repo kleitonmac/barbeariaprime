@@ -890,7 +890,7 @@ function App() {
         <div className="p-6 h-full flex flex-col">
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center gap-2 text-amber-500">
-              <img src="/logo.png" className="h-6 w-6 bg-amber-500 rounded w-6 h-6" />
+              <img src="/logo.png" className="h-8 w-8 bg-amber-500 rounded w-8 h-8" />
               <span className="text-xl font-bold">Novo Estilo</span>
             </div>
             <button
