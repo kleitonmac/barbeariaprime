@@ -1,6 +1,6 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from "react"; 
 import { Scissors, Instagram, MessageCircle, Menu, X, Clock, Calendar, RefreshCw } from "lucide-react"; 
-import { IconAlarm, IconScissors, IconAlertSquareRounded, IconCalendar, IconBrandMessenger, IconPhone, IconCurrencyReal } from '@tabler/icons-react'; 
+import { IconAlarm, IconScissors, IconAlertSquareRounded, IconCalendar, IconBrandMessenger, IconPhone, IconCurrencyReal,IconUserFilled } from '@tabler/icons-react'; 
 
 function App() {
   interface Agendamento {
@@ -514,7 +514,7 @@ function App() {
                 href="/admin" 
                 className="flex items-center gap-2 text-amber-500 hover:text-amber-400 transition font-semibold"
               >
-                <img src="/barbeiro.png" alt="Barbeiro" className="w-4 h-4" />
+                <IconUserFilled className="w-4 h-4" />
                 Área do Barbeiro
               </a>
             </div>
