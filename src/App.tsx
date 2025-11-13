@@ -494,7 +494,7 @@ function App() {
             </div>
 
             {/* Relógio e Data em tempo real - Desktop */}
-            <div className="hidden md:flex items-center gap-4 text-gray-300">
+            <div className="hidden md:flex items-center gap-4 text-white">
               <div className="flex items-center gap-2">
                 <Calendar className="w-5 h-5 text-amber-400" />
                 <span className="font-medium">{dataAtual}</span>
@@ -522,7 +522,7 @@ function App() {
             {/* Botão Menu Mobile com Relógio e Data */}
             <div className="md:hidden flex items-center gap-4">
               {!menuOpen && (
-                <div className="flex items-center gap-3 text-gray-300">
+                <div className="flex items-center gap-3 text-white">
                   <div className="flex items-center gap-1">
                     <Calendar className="w-4 h-4 text-amber-400" />
                     <span className="font-medium text-sm">{dataAtual}</span>
@@ -555,7 +555,7 @@ function App() {
                 <br />
                 Bem-vindo à Barbearia Novo Estilo!
               </h1>
-              <p className="text-lg md:text-xl mb-8 text-gray-300">
+              <p className="text-lg md:text-xl mb-8 text-white">
                 Agende seu horário online e transforme seu visual com a gente!
               </p>
               <a 
@@ -571,7 +571,7 @@ function App() {
         {/* Catálogo de Serviços */}
         <section id="services" className="py-20 bg-zinc-900 text-center">
           <h2 className="text-5xl font-bold mb-8">Catálogo de Serviços</h2>
-          <p className="text-gray-400 mb-12">
+          <p className="text-white mb-12">
             Escolha o corte que combina com seu estilo.
           </p>
           
@@ -583,12 +583,12 @@ function App() {
                 onClick={() => setFormData({ ...formData, servico: s.nome })}
               >
                 <h3 className="text-2xl font-bold text-amber-500 mb-3">{s.nome}</h3>
-                <p className="text-gray-300 mb-2">
+                <p className="text-white mb-2">
                   <IconCurrencyReal size={19.5} className="inline-block mr-1" />
                   {s.preco.toFixed(2)}
                 </p>
-                <p className="text-gray-300 flex justify-center items-center gap-2">
-                  <Clock className="w-4 h-4 text-gray-300" />
+                <p className="text-white flex justify-center items-center gap-2">
+                  <Clock className="w-4 h-4 text-white" />
                   {s.duracao}
                 </p>
               </div>
@@ -643,7 +643,7 @@ function App() {
                 />
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-300">
+                  <label className="block text-sm font-medium text-white">
                     Telefone
                   </label>
                   <input 
@@ -657,7 +657,7 @@ function App() {
                     title="Digite um telefone válido com DDD. Ex: (27) 99999-9999"
                     required 
                   />
-                  <p className="text-gray-400 text-xs">
+                  <p className="text-white text-xs">
                     <IconPhone className="inline-block mr-1" />
                     Formato: (DDD) 9XXXX-XXXX para celular ou (DDD) XXXX-XXXX para fixo
                   </p>
@@ -677,7 +677,7 @@ function App() {
                 </select>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-300">
+                  <label className="block text-sm font-medium text-white">
                     Data do Agendamento
                   </label>
                   <input 
@@ -701,7 +701,7 @@ function App() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-300">
+                  <label className="block text-sm font-medium text-white">
                     Horário Disponível
                   </label>
                   <select 
@@ -723,7 +723,7 @@ function App() {
                     )}
                   </select>
                   {formData.data && (
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-white text-sm">
                       <IconAlarm className="inline-block mr-1" />
                       {horariosFiltrados.length} horário(s) disponível(is) para {formatarData(formData.data)}
                       {isHoje(formData.data) && " (Hoje)"}
@@ -764,7 +764,7 @@ function App() {
               </div>
               
               {getAgendamentosPorData(getDataAtual()).length === 0 ? (
-                <p className="text-gray-400">Nenhum agendamento para hoje.</p>
+                <p className="text-white">Nenhum agendamento para hoje.</p>
               ) : (
                 <ul className="space-y-2">
                   {getAgendamentosPorData(getDataAtual())
@@ -774,7 +774,7 @@ function App() {
                         <div className="flex justify-between items-start">
                           <div>
                             <span className="font-bold text-amber-400">{a.nome}</span>
-                            <div className="text-gray-300 mt-1">
+                            <div className="text-white mt-1">
                               <IconScissors className="inline-block mr-1" />
                               {a.servico}
                             </div>
@@ -800,7 +800,7 @@ function App() {
               {getAgendamentosPorData(
                 new Date(new Date().setDate(new Date().getDate() + 1)).toISOString().split("T")[0]
               ).length === 0 ? (
-                <p className="text-gray-400">Nenhum agendamento para amanhã.</p>
+                <p className="text-white">Nenhum agendamento para amanhã.</p>
               ) : (
                 <ul className="space-y-2">
                   {getAgendamentosPorData(
@@ -812,7 +812,7 @@ function App() {
                         <div className="flex justify-between items-start">
                           <div>
                             <span className="font-bold text-amber-400">{a.nome}</span>
-                            <div className="text-gray-300 mt-1">
+                            <div className="text-white  mt-1">
                               <IconScissors className="inline-block mr-1" />
                               {a.servico}
                             </div>
@@ -836,7 +836,7 @@ function App() {
         {/* Contato */}
         <section id="contact" className="py-20 bg-zinc-900 text-center">
           <h2 className="text-3xl font-bold mb-4">Entre em Contato</h2>
-          <p className="text-gray-400 mb-6">
+          <p className="text-white mb-6">
             📍 Av. Belo Horizonte, 1343 - Nova Carapina I, Serra<br />
             📞 (27) 99727-6019
           </p>
@@ -856,14 +856,14 @@ function App() {
         <div className="p-6 h-full flex flex-col">
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center gap-2 text-amber-500">
-              <Scissors className="h-6 w-6" />
+              <img src="/public/logo.png" className="h-6 w-6 bg-amber-500 rounded w-7 h-7" />
               <span className="text-xl font-bold">Novo Estilo</span>
             </div>
             <button 
               onClick={() => setMenuOpen(false)}
               className="p-2 hover:bg-zinc-800 rounded-lg transition"
             >
-              <X className="h-6 w-6 text-gray-400 hover:text-amber-500" />
+              <X className="h-6 w-6 text-white hover:text-amber-500" />
             </button>
           </div>
 
@@ -924,8 +924,8 @@ function App() {
                 <MessageCircle className="h-6 w-6 text-green-500 hover:text-green-600" />
               </a>
             </div>
-            <p className="text-center text-gray-400 text-sm">📍 Av. Belo Horizonte, 1343 - Nova Carapina I, Serra</p>
-            <p className="text-center text-gray-400 text-sm mt-2">📞 (27) 99727-6019</p>
+            <p className="text-center text-white text-sm">📍 Av. Belo Horizonte, 1343 - Nova Carapina I, Serra</p>
+            <p className="text-center text-white text-sm mt-2">📞 (27) 99727-6019</p>
           </div>
         </div>
       </div>
