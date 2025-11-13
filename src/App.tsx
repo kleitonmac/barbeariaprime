@@ -11,7 +11,6 @@ import {
   IconUserFilled,
   IconBrandWhatsapp,
   IconMapPinFilled
-
 } from '@tabler/icons-react';
 
 function App() {
@@ -239,11 +238,27 @@ function App() {
     return /^[1-9]{2}(?:[2-8]|9[1-9])[0-9]{7,8}$/.test(numeros);
   };
 
-  // 🕓 Gera horários de 09:00 às 19:00
-  const horariosDisponiveisBase = Array.from({ length: 11 }, (_, i) => {
-    const hora = 9 + i;
-    return `${hora.toString().padStart(2, "0")}:00`;
-  });
+  // 🕓 Gera horários das 08:00 às 19:00 com intervalos de 30 minutos, exceto almoço
+  const gerarHorariosCompletos = () => {
+    const horarios = [];
+    
+    for (let hora = 8; hora <= 19; hora++) {
+      // Pula o horário de almoço (12:00 às 13:00)
+      if (hora === 12) continue;
+      
+      // Adiciona horário cheio (ex: 08:00)
+      horarios.push(`${hora.toString().padStart(2, "0")}:00`);
+      
+      // Adiciona horário com 30 minutos (ex: 08:30), exceto para as 19:00
+      if (hora !== 19) {
+        horarios.push(`${hora.toString().padStart(2, "0")}:30`);
+      }
+    }
+    
+    return horarios;
+  };
+
+  const horariosDisponiveisBase = gerarHorariosCompletos();
 
   // 🧠 Filtra horários disponíveis - CORRIGIDA
   const horariosFiltrados = formData.data ? horariosDisponiveisBase.filter((h) => {
