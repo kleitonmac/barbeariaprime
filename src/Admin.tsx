@@ -415,13 +415,13 @@ function Admin() {
       <div className="min-h-screen bg-black text-white flex items-center justify-center">
         <div className="bg-zinc-900 p-8 rounded-lg max-w-md w-full mx-4">
           <div className="flex items-center justify-center mb-6">
-            <Scissors className="h-10 w-10 text-amber-500 mr-3" />
-            <h1 className="text-2xl font-bold">Admin Prime</h1>
+            <img src='/logo.png' className="h-20 w-26 text-amber-500 bg-amber-500 mr-3" />
+            <h1 className="text-2xl font-bold">Admin Novo Estilo</h1>
           </div>
           
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-white mb-2">
                 Senha de Administrador
               </label>
               <input
@@ -453,7 +453,7 @@ function Admin() {
             </a>
           </div>
           
-          <p className="text-gray-400 text-sm mt-4 text-center">
+          <p className="text-white text-sm mt-4 text-center">
             Acesso restrito ao barbeiro
           </p>
         </div>
@@ -468,10 +468,10 @@ function Admin() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-3">
-              <Scissors className="h-8 w-8 text-amber-500" />
+              <img src='/logo.png' className="h-10 w-10 text-amber-500 bg-amber-500" />
               <div>
                 <h1 className="text-2xl font-bold">Painel Admin</h1>
-                <p className="text-gray-400 text-sm">Gerencie os agendamentos e finanças</p>
+                <p className="text-white text-sm">Gerencie os agendamentos e finanças</p>
               </div>
             </div>
             
@@ -481,7 +481,7 @@ function Admin() {
                 href="/"
                 className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md transition"
               >
-                <Home className="h-4 w-4" />
+                <Home className="h-7 w-7" />
                 <span>Voltar ao Site</span>
               </a>
               
@@ -505,7 +505,7 @@ function Admin() {
             className={`px-6 py-3 rounded-md font-semibold transition flex items-center gap-2 ${
               activeTab === 'dashboard'
                 ? 'bg-amber-500 text-black'
-                : 'bg-zinc-800 text-gray-300 hover:bg-zinc-700'
+                : 'bg-zinc-800 text-white hover:bg-zinc-700'
             }`}
           >
             <TrendingUp className="h-5 w-5" />
@@ -516,7 +516,7 @@ function Admin() {
             className={`px-6 py-3 rounded-md font-semibold transition flex items-center gap-2 ${
               activeTab === 'agendamentos'
                 ? 'bg-amber-500 text-black'
-                : 'bg-zinc-800 text-gray-300 hover:bg-zinc-700'
+                : 'bg-zinc-800 text-white hover:bg-zinc-700'
             }`}
           >
             <Calendar className="h-5 w-5" />
@@ -547,40 +547,40 @@ function Admin() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
             <div className="bg-zinc-900 p-6 rounded-lg border border-amber-500/20 transform transition-all duration-300 hover:scale-105">
               <div className="flex items-center justify-between mb-2">
-                <h3 className="text-sm font-medium text-gray-400">Lucro Hoje</h3>
+                <h3 className="text-sm font-medium text-white">Lucro Hoje</h3>
                 <DollarSign className="h-5 w-5 text-green-500" />
               </div>
               <p className="text-3xl font-bold text-green-500">{formatarMoeda(dashboardStats.lucroHoje)}</p>
-              <p className="text-xs text-gray-500 mt-1">{dashboardStats.agendamentosHoje} agendamento(s)</p>
+              <p className="text-xs text-white   mt-1">{dashboardStats.agendamentosHoje} agendamento(s)</p>
             </div>
 
             <div className="bg-zinc-900 p-6 rounded-lg border border-amber-500/20">
               <div className="flex items-center justify-between mb-2">
-                <h3 className="text-sm font-medium text-gray-400">Lucro Mensal</h3>
+                <h3 className="text-sm font-medium text-white">Lucro Mensal</h3>
                 <TrendingUp className="h-5 w-5 text-amber-500" />
               </div>
               <p className="text-3xl font-bold text-amber-500">{formatarMoeda(dashboardStats.lucroMensal)}</p>
-              <p className="text-xs text-gray-500 mt-1">{dashboardStats.agendamentosMes} agendamento(s)</p>
+              <p className="text-xs text-white mt-1">{dashboardStats.agendamentosMes} agendamento(s)</p>
             </div>
 
             <div className="bg-zinc-900 p-6 rounded-lg border border-amber-500/20">
               <div className="flex items-center justify-between mb-2">
-                <h3 className="text-sm font-medium text-gray-400">Total de Agendamentos</h3>
+                <h3 className="text-sm font-medium text-white">Total de Agendamentos</h3>
                 <Calendar className="h-5 w-5 text-blue-500" />
               </div>
               <p className="text-3xl font-bold text-blue-500">{dashboardStats.totalAgendamentos}</p>
-              <p className="text-xs text-gray-500 mt-1">Mês: {dashboardStats.agendamentosMes}</p>
+              <p className="text-xs text-white mt-1">Mês: {dashboardStats.agendamentosMes}</p>
             </div>
 
             <div className="bg-zinc-900 p-6 rounded-lg border border-amber-500/20">
               <div className="flex items-center justify-between mb-2">
-                <h3 className="text-sm font-medium text-gray-400">Média Diária</h3>
+                <h3 className="text-sm font-medium text-white">Média Diária</h3>
                 <Clock className="h-5 w-5 text-purple-500" />
               </div>
               <p className="text-3xl font-bold text-purple-500">
                 {formatarMoeda(dashboardStats.mediaDiaria)}
               </p>
-              <p className="text-xs text-gray-500 mt-1">Mês atual</p>
+              <p className="text-xs text-white mt-1">Mês atual</p>
             </div>
           </div>
 
@@ -592,7 +592,7 @@ function Admin() {
             </h2>
             
             {Object.keys(dashboardStats.lucrosPorDia).length === 0 ? (
-              <p className="text-gray-400 text-center py-8">Nenhum agendamento neste mês</p>
+              <p className="text-white text-center py-8">Nenhum agendamento neste mês</p>
             ) : (
               <div className="space-y-4">
                 {Object.keys(dashboardStats.lucrosPorDia)
@@ -605,7 +605,7 @@ function Admin() {
                     return (
                       <div key={dia} className="space-y-2">
                         <div className="flex justify-between items-center">
-                          <span className="text-sm text-gray-300">{formatarData(dia)}</span>
+                          <span className="text-sm text-white">{formatarData(dia)}</span>
                           <span className="text-sm font-bold text-green-500">{formatarMoeda(lucro)}</span>
                         </div>
                         <div className="w-full bg-zinc-800 rounded-full h-3 overflow-hidden">
@@ -629,7 +629,7 @@ function Admin() {
             </h2>
             
             {dashboardStats.servicosMaisPopulares.length === 0 ? (
-              <p className="text-gray-400 text-center py-8">Nenhum serviço registrado este mês</p>
+              <p className="text-white text-center py-8">Nenhum serviço registrado este mês</p>
             ) : (
               <div className="space-y-4">
                 {dashboardStats.servicosMaisPopulares.map((servico) => {
@@ -639,8 +639,8 @@ function Admin() {
                     <div key={servico.servico} className="space-y-2">
                       <div className="flex justify-between items-center">
                         <div>
-                          <span className="font-medium text-gray-300">{servico.servico}</span>
-                          <span className="text-sm text-gray-500 ml-2">({servico.quantidade}x)</span>
+                          <span className="font-medium text-white">{servico.servico}</span>
+                          <span className="text-sm text-white ml-2">({servico.quantidade}x)</span>
                         </div>
                         <span className="text-sm font-bold text-green-500">{formatarMoeda(servico.lucroTotal)}</span>
                       </div>
@@ -663,11 +663,11 @@ function Admin() {
               <h2 className="text-xl font-bold">Últimos Agendamentos</h2>
             </div>
             {loading && agendamentos.length === 0 ? (
-              <div className="p-8 text-center text-gray-400">
+              <div className="p-8 text-center text-white">
                 <p>Carregando...</p>
               </div>
             ) : agendamentosOrdenados.slice(0, 5).length === 0 ? (
-              <div className="p-8 text-center text-gray-400">
+              <div className="p-8 text-center text-white">
                 <p>Nenhum agendamento encontrado.</p>
               </div>
             ) : (
@@ -682,7 +682,7 @@ function Admin() {
                               {agendamento.servico}
                             </span>
                           </div>
-                          <div className="flex items-center gap-4 text-sm text-gray-400">
+                          <div className="flex items-center gap-4 text-sm text-white">
                             <div className="flex items-center gap-1">
                               <Calendar className="h-4 w-4" />
                               {formatarData(agendamento.data)}
@@ -728,7 +728,7 @@ function Admin() {
             <h2 className="text-xl font-bold mb-4">Filtros</h2>
             <div className="flex flex-col sm:flex-row gap-4">
               <div className="flex-1">
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-white mb-2">
                   Filtrar por data
                 </label>
                 <input
@@ -752,15 +752,15 @@ function Admin() {
           {/* Estatísticas */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
             <div className="bg-zinc-900 p-6 rounded-lg">
-              <h3 className="text-lg font-semibold text-gray-300 mb-2">Total de Agendamentos</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Total de Agendamentos</h3>
               <p className="text-3xl font-bold text-amber-500">{dashboardStats.totalAgendamentos}</p>
             </div>
             <div className="bg-zinc-900 p-6 rounded-lg">
-              <h3 className="text-lg font-semibold text-gray-300 mb-2">Agendamentos Hoje</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Agendamentos Hoje</h3>
               <p className="text-3xl font-bold text-amber-500">{dashboardStats.agendamentosHoje}</p>
             </div>
             <div className="bg-zinc-900 p-6 rounded-lg">
-              <h3 className="text-lg font-semibold text-gray-300 mb-2">Filtrados</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">Filtrados</h3>
               <p className="text-3xl font-bold text-amber-500">{agendamentosFiltrados.length}</p>
             </div>
           </div>
@@ -774,11 +774,11 @@ function Admin() {
             </div>
 
             {agendamentosOrdenados.length === 0 ? (
-              <div className="p-8 text-center text-gray-400">
+              <div className="p-8 text-center text-white">
                 <p>Nenhum agendamento encontrado.</p>
               </div>
             ) : loading && agendamentos.length === 0 ? (
-              <div className="p-8 text-center text-gray-400">
+              <div className="p-8 text-center text-white">
                 <p>Carregando agendamentos...</p>
               </div>
             ) : (
@@ -792,7 +792,7 @@ function Admin() {
                         <div className="space-y-4">
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                              <label className="block text-sm font-medium text-gray-300 mb-2">
+                              <label className="block text-sm font-medium text-white mb-2">
                                 Nome
                               </label>
                               <input
@@ -803,7 +803,7 @@ function Admin() {
                               />
                             </div>
                             <div>
-                              <label className="block text-sm font-medium text-gray-300 mb-2">
+                              <label className="block text-sm font-medium text-white mb-2">
                                 Telefone
                               </label>
                               <input
@@ -814,7 +814,7 @@ function Admin() {
                               />
                             </div>
                             <div>
-                              <label className="block text-sm font-medium text-gray-300 mb-2">
+                              <label className="block text-sm font-medium text-white mb-2">
                                 Serviço
                               </label>
                               <input
@@ -825,7 +825,7 @@ function Admin() {
                               />
                             </div>
                             <div>
-                              <label className="block text-sm font-medium text-gray-300 mb-2">
+                              <label className="block text-sm font-medium text-white mb-2">
                                 Preço
                               </label>
                               <input
@@ -837,7 +837,7 @@ function Admin() {
                               />
                             </div>
                             <div>
-                              <label className="block text-sm font-medium text-gray-300 mb-2">
+                              <label className="block text-sm font-medium text-white mb-2">
                                 Data
                               </label>
                               <input
@@ -848,7 +848,7 @@ function Admin() {
                               />
                             </div>
                             <div>
-                              <label className="block text-sm font-medium text-gray-300 mb-2">
+                              <label className="block text-sm font-medium text-white mb-2">
                                 Horário
                               </label>
                               <input
@@ -859,7 +859,7 @@ function Admin() {
                               />
                             </div>
                             <div>
-                              <label className="block text-sm font-medium text-gray-300 mb-2">
+                              <label className="block text-sm font-medium text-white mb-2">
                                 Status
                               </label>
                               <select
@@ -907,7 +907,7 @@ function Admin() {
                               </div>
                               <div className="flex items-center space-x-2">
                                 <Phone className="h-4 w-4 text-green-500" />
-                                <span className="text-gray-300">{agendamento.telefone}</span>
+                                <span className="text-white">{agendamento.telefone}</span>
                               </div>
                               {agendamento.preco && (
                                 <div className="flex items-center space-x-2">
@@ -917,7 +917,7 @@ function Admin() {
                               )}
                             </div>
                             
-                            <div className="flex flex-wrap gap-4 text-sm text-gray-400">
+                            <div className="flex flex-wrap gap-4 text-sm text-white">
                               <div className="flex items-center space-x-1">
                                 <Scissors className="h-4 w-4" />
                                 <span>{agendamento.servico}</span>

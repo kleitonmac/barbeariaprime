@@ -1,6 +1,18 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from "react"; 
 import { Scissors, Instagram, MessageCircle, Menu, X, Clock, Calendar, RefreshCw } from "lucide-react"; 
-import { IconAlarm, IconScissors, IconAlertSquareRounded, IconCalendar, IconBrandMessenger, IconPhone, IconCurrencyReal,IconUserFilled } from '@tabler/icons-react'; 
+import {
+   IconAlarm, 
+   IconScissors, 
+   IconAlertSquareRounded, 
+   IconCalendar, 
+   IconBrandMessenger, 
+   IconPhone, 
+   IconCurrencyReal, 
+   IconUserFilled, 
+   IconBrandWhatsapp, 
+   IconMapPinFilled 
+  
+  } from '@tabler/icons-react'; 
 
 function App() {
   interface Agendamento {
@@ -837,15 +849,15 @@ function App() {
         <section id="contact" className="py-20 bg-zinc-900 text-center">
           <h2 className="text-3xl font-bold mb-4">Entre em Contato</h2>
           <p className="text-white mb-6">
-            📍 Av. Belo Horizonte, 1343 - Nova Carapina I, Serra<br />
-            📞 (27) 99727-6019
+            <IconMapPinFilled className="inline-block mr-1" /> Av. Belo Horizonte, 1343 - Nova Carapina I, Serra<br />
+            <IconPhone className="inline-block mr-1" /> (27) 99727-6019
           </p>
           <div className="flex justify-center space-x-8">
             <a href="https://www.instagram.com/novoestilobarbeariaes/" target="_blank" rel="noreferrer">
               <Instagram className="h-8 w-8 text-amber-500 hover:text-amber-600 transition" />
             </a>
             <a href="https://wa.me/5527997276019" target="_blank" rel="noreferrer">
-              <MessageCircle className="h-8 w-8 text-green-500 hover:text-green-600 transition" />
+              <IconBrandWhatsapp className="h-8 w-8 text-green-500 hover:text-green-600 transition" />
             </a>
           </div>
         </section>
@@ -856,7 +868,7 @@ function App() {
         <div className="p-6 h-full flex flex-col">
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center gap-2 text-amber-500">
-              <img src="/logo.png" className="h-6 w-6 bg-amber-500 rounded w-7 h-7" />
+              <img src="/logo.png" className="h-6 w-6 bg-amber-500 rounded w-6 h-6" />
               <span className="text-xl font-bold">Novo Estilo</span>
             </div>
             <button 
@@ -921,11 +933,11 @@ function App() {
                 rel="noreferrer"
                 className="p-3 hover:bg-zinc-800 rounded-lg transition"
               >
-                <MessageCircle className="h-6 w-6 text-green-500 hover:text-green-600" />
+                <IconBrandWhatsapp className="h-6 w-6 text-green-500 hover:text-green-600" />
               </a>
             </div>
-            <p className="text-center text-white text-sm">📍 Av. Belo Horizonte, 1343 - Nova Carapina I, Serra</p>
-            <p className="text-center text-white text-sm mt-2">📞 (27) 99727-6019</p>
+            <p className="text-center text-white text-sm"><IconMapPinFilled className="inline-block mr-1" /> Av. Belo Horizonte, 1343 - Nova Carapina I, Serra</p>
+            <p className="text-center text-white text-sm mt-2"><IconPhone className="inline-block mr-1" /> (27) 99727-6019</p>
           </div>
         </div>
       </div>
