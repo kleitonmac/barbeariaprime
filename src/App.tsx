@@ -408,7 +408,14 @@ function App() {
 
     // Envia mensagem para WhatsApp
     const mensagem = encodeURIComponent(
-      `*Novo Agendamento Confirmado* 📅\n\n👤 Nome: ${formData.nome}\n📞 Telefone: ${formData.telefone}\n✂️ Serviço: ${formData.servico}\n📅 Data: ${formatarData(formData.data)}\n⏰ Horário: ${formData.horario}\n✅ Confirmação automática via site\n\n📲 *Link do Agendamento:* https://barbeariaprime.vercel.app/#booking`
+      `*Novo Agendamento Confirmado* 
+      📅\n\n👤 Nome: ${formData.nome}
+      \n📞 Telefone: ${formData.telefone}
+      \n✂️ Serviço: ${formData.servico}
+      \n📅 Data: ${formatarData(formData.data)}
+      \n⏰ Horário: ${formData.horario}
+      \n✅ Confirmação automática via site\n
+      \n📲 *Link do Agendamento:* https://novoestilo.vercel.app/#booking`
     );
 
     const numeroBarbearia = "5527997276019";
