@@ -1,18 +1,18 @@
-import { useState, useEffect, ChangeEvent, FormEvent } from "react"; 
-import { Scissors, Instagram, MessageCircle, Menu, X, Clock, Calendar, RefreshCw } from "lucide-react"; 
+import { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import { Scissors, Instagram, MessageCircle, Menu, X, Clock, Calendar, RefreshCw } from "lucide-react";
 import {
-   IconAlarm, 
-   IconScissors, 
-   IconAlertSquareRounded, 
-   IconCalendar, 
-   IconBrandMessenger, 
-   IconPhone, 
-   IconCurrencyReal, 
-   IconUserFilled, 
-   IconBrandWhatsapp, 
-   IconMapPinFilled 
-  
-  } from '@tabler/icons-react'; 
+  IconAlarm,
+  IconScissors,
+  IconAlertSquareRounded,
+  IconCalendar,
+  IconBrandMessenger,
+  IconPhone,
+  IconCurrencyReal,
+  IconUserFilled,
+  IconBrandWhatsapp,
+  IconMapPinFilled
+
+} from '@tabler/icons-react';
 
 function App() {
   interface Agendamento {
@@ -137,7 +137,7 @@ function App() {
             localStorage.setItem('agendamentos', JSON.stringify(result.data));
             localStorage.setItem('agendamentosTimestamp', new Date().getTime().toString());
             setAgendamentos(result.data);
-            
+
             // Mostra notificação
             setLastAutoRefresh(new Date());
             setShowRefreshNotification(true);
@@ -163,7 +163,7 @@ function App() {
     try {
       const dados = JSON.parse(pendentes);
       const apiUrl = getApiUrl();
-      
+
       for (const agendamento of dados) {
         await fetch(apiUrl, {
           method: "POST",
@@ -173,7 +173,7 @@ function App() {
           body: JSON.stringify(agendamento),
         });
       }
-      
+
       localStorage.removeItem("pendentes");
       console.log("✅ Pendentes reenviados com sucesso!");
     } catch (error) {
@@ -257,7 +257,7 @@ function App() {
       // Converte para minutos para comparação
       const minutosAtuais = parseInt(horaAtual.split(":")[0]) * 60 + parseInt(horaAtual.split(":")[1]);
       const minutosAgendamento = parseInt(h.split(":")[0]) * 60 + parseInt(h.split(":")[1]);
-      
+
       // Permite agendamento apenas para horários futuros (com margem de 30 minutos)
       return (minutosAgendamento > minutosAtuais + 30) && !ocupado;
     }
@@ -267,7 +267,7 @@ function App() {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    
+
     if (name === 'telefone') {
       const telefoneFormatado = formatarTelefone(value);
       setFormData((prev) => ({
@@ -299,7 +299,7 @@ function App() {
     // Validação: não permitir datas passadas - CORRIGIDA
     const dataSelecionada = new Date(formData.data + 'T00:00:00');
     const dataHoje = new Date(getDataAtual() + 'T00:00:00');
-    
+
     if (dataSelecionada < dataHoje) {
       setError("⚠️ Não é possível marcar para datas passadas. Por favor, escolha uma data futura.");
       setLoading(false);
@@ -311,7 +311,7 @@ function App() {
       const horaAtual = getHoraAtual();
       const minutosAtuais = parseInt(horaAtual.split(":")[0]) * 60 + parseInt(horaAtual.split(":")[1]);
       const minutosAgendamento = parseInt(formData.horario.split(":")[0]) * 60 + parseInt(formData.horario.split(":")[1]);
-      
+
       // Margem de 30 minutos para agendamentos
       if (minutosAgendamento <= minutosAtuais + 30) {
         setError("⚠️ Para agendamentos de hoje, escolha um horário com pelo menos 30 minutos de antecedência.");
@@ -362,7 +362,7 @@ function App() {
     try {
       const apiUrl = getApiUrl();
       console.log('Enviando agendamento para:', apiUrl);
-      
+
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
@@ -383,9 +383,9 @@ function App() {
 
       const result = await response.json();
       console.log('Resposta do servidor:', result);
-      
+
       setSuccessMessage("Agendamento realizado com sucesso!");
-      
+
       // Atualiza lista local imediatamente
       const novosAgendamentos = [...agendamentos, novoAgendamento];
       setAgendamentos(novosAgendamentos);
@@ -394,12 +394,12 @@ function App() {
     } catch (error: any) {
       console.error("Erro ao salvar agendamento:", error);
       setError("Sem conexão com o servidor. Agendamento salvo localmente.");
-      
+
       // Salva no localStorage como pendente E como agendamento local
       const pendentes = JSON.parse(localStorage.getItem("pendentes") || "[]");
       pendentes.push(novoAgendamento);
       localStorage.setItem("pendentes", JSON.stringify(pendentes));
-      
+
       // Também salva nos agendamentos locais
       const novosAgendamentos = [...agendamentos, novoAgendamento];
       setAgendamentos(novosAgendamentos);
@@ -408,14 +408,14 @@ function App() {
 
     // Envia mensagem para WhatsApp
     const mensagem = encodeURIComponent(
-      `*Novo Agendamento Confirmado* 
-      📅\n\n👤 Nome: ${formData.nome}
-      \n📞 Telefone: ${formData.telefone}
-      \n✂️ Serviço: ${formData.servico}
-      \n📅 Data: ${formatarData(formData.data)}
-      \n⏰ Horário: ${formData.horario}
-      \n✅ Confirmação automática via site\n
-      \n📲 *Link do Agendamento:* https://novoestilo.vercel.app/#booking`
+      `*Novo Agendamento Confirmado* 📅\n\n` +
+      `👤 Nome: ${formData.nome}\n` +
+      `📞 Telefone: ${formData.telefone}\n` +
+      `✂️ Serviço: ${formData.servico}\n` +
+      `📅 Data: ${formatarData(formData.data)}\n` +
+      `⏰ Horário: ${formData.horario}\n` +
+      `✅ Confirmação automática via site\n\n` +
+      `📲 *Link do Agendamento:* https://novoestilo.vercel.app/#booking`
     );
 
     const numeroBarbearia = "5527997276019";
@@ -429,7 +429,7 @@ function App() {
       data: "",
       horario: "",
     });
-    
+
     setLoading(false);
   };
 
@@ -439,7 +439,7 @@ function App() {
       const dataHoje = getDataAtual();
       const agendamentosSalvos = JSON.parse(localStorage.getItem("agendamentos") ?? "[]") as Agendamento[];
       const agendamentosAtuais = agendamentosSalvos.filter((a) => a.data >= dataHoje);
-      
+
       if (agendamentosSalvos.length !== agendamentosAtuais.length) {
         localStorage.setItem("agendamentos", JSON.stringify(agendamentosAtuais));
         setAgendamentos(agendamentosAtuais);
@@ -448,7 +448,7 @@ function App() {
 
     const interval = setInterval(verificarEApagarAntigos, 60000);
     verificarEApagarAntigos();
-    
+
     return () => clearInterval(interval);
   }, []);
 
@@ -459,7 +459,7 @@ function App() {
     } else {
       document.body.style.overflow = 'unset';
     }
-    
+
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -474,7 +474,7 @@ function App() {
     <div className="min-h-screen bg-black text-white relative overflow-x-hidden">
       {/* Overlay escuro com blur */}
       {menuOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 transition-all duration-300 md:hidden"
           onClick={() => setMenuOpen(false)}
         />
@@ -485,7 +485,7 @@ function App() {
         <div className="fixed top-4 right-4 z-50 bg-amber-500 text-black px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 animate-fade-in">
           <RefreshCw className="w-4 h-4 animate-spin" />
           <span className="font-semibold">Agenda atualizada automaticamente!</span>
-          <button 
+          <button
             onClick={() => setShowRefreshNotification(false)}
             className="ml-2 text-black hover:text-gray-700"
           >
@@ -498,7 +498,7 @@ function App() {
       <div className={`transition-all duration-300 ${menuOpen ? 'blur-sm opacity-80' : 'blur-0 opacity-100'}`}>
         {/* Header */}
         <header className="relative h-screen" id="home">
-          <div 
+          <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80")' }}
           >
@@ -529,8 +529,8 @@ function App() {
               <a href="#services" className="hover:text-amber-500 transition">Serviços</a>
               <a href="#booking" className="hover:text-amber-500 transition">Agendamento</a>
               <a href="#contact" className="hover:text-amber-500 transition">Contato</a>
-              <a 
-                href="/admin" 
+              <a
+                href="/admin"
                 className="flex items-center gap-2 text-amber-500 hover:text-amber-400 transition font-semibold"
               >
                 <IconUserFilled className="w-4 h-4" />
@@ -552,8 +552,8 @@ function App() {
                   </div>
                 </div>
               )}
-              
-              <button 
+
+              <button
                 className="focus:outline-none z-50 relative"
                 onClick={() => setMenuOpen(!menuOpen)}
               >
@@ -577,8 +577,8 @@ function App() {
               <p className="text-lg md:text-xl mb-8 text-white">
                 Agende seu horário online e transforme seu visual com a gente!
               </p>
-              <a 
-                href="#booking" 
+              <a
+                href="#booking"
                 className="bg-amber-500 text-black px-8 py-4 rounded-md font-semibold hover:bg-amber-600 transition"
               >
                 Agende seu Horário
@@ -593,11 +593,11 @@ function App() {
           <p className="text-white mb-12">
             Escolha o corte que combina com seu estilo.
           </p>
-          
+
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 px-6 max-w-6xl mx-auto">
             {servicos.map((s, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="bg-zinc-800 p-6 rounded-lg shadow-lg hover:scale-105 transition cursor-pointer"
                 onClick={() => setFormData({ ...formData, servico: s.nome })}
               >
@@ -619,7 +619,7 @@ function App() {
         <section id="booking" className="py-20 bg-black">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold mb-16 text-center">Agende seu Horário</h2>
-            
+
             <div className="max-w-md mx-auto bg-zinc-900 p-8 rounded-lg">
               {/* Aviso informativo */}
               <div className="mb-6 p-4 bg-blue-900/30 border border-blue-500 rounded-md">
@@ -651,30 +651,30 @@ function App() {
               )}
 
               <form onSubmit={handleSubmit} className="space-y-6">
-                <input 
-                  type="text" 
-                  name="nome" 
-                  value={formData.nome} 
+                <input
+                  type="text"
+                  name="nome"
+                  value={formData.nome}
                   onChange={handleChange}
                   className="w-full bg-zinc-800 rounded-md px-4 py-3 focus:ring-2 focus:ring-amber-500"
-                  placeholder="Seu nome completo" 
-                  required 
+                  placeholder="Seu nome completo"
+                  required
                 />
 
                 <div className="space-y-2">
                   <label className="block text-sm font-medium text-white">
                     Telefone
                   </label>
-                  <input 
-                    type="tel" 
-                    name="telefone" 
-                    value={formData.telefone} 
+                  <input
+                    type="tel"
+                    name="telefone"
+                    value={formData.telefone}
                     onChange={handleChange}
                     className="w-full bg-zinc-800 rounded-md px-4 py-3 focus:ring-2 focus:ring-amber-500"
-                    placeholder="(27) 9999-99999" 
+                    placeholder="(27) 9999-99999"
                     pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}"
                     title="Digite um telefone válido com DDD. Ex: (27) 99999-9999"
-                    required 
+                    required
                   />
                   <p className="text-white text-xs">
                     <IconPhone className="inline-block mr-1" />
@@ -682,9 +682,9 @@ function App() {
                   </p>
                 </div>
 
-                <select 
-                  name="servico" 
-                  value={formData.servico} 
+                <select
+                  name="servico"
+                  value={formData.servico}
                   onChange={handleChange}
                   className="w-full bg-zinc-800 rounded-md px-4 py-3 focus:ring-2 focus:ring-amber-500"
                   required
@@ -699,15 +699,15 @@ function App() {
                   <label className="block text-sm font-medium text-white">
                     Data do Agendamento
                   </label>
-                  <input 
-                    type="date" 
-                    name="data" 
-                    value={formData.data} 
+                  <input
+                    type="date"
+                    name="data"
+                    value={formData.data}
                     onChange={handleChange}
                     min={getDataMinima()}
                     max={getDataMaxima()}
                     className="w-full bg-zinc-800 rounded-md px-4 py-3 focus:ring-2 focus:ring-amber-500"
-                    required 
+                    required
                   />
                   {formData.data && (
                     <p className="text-amber-400 text-sm">
@@ -723,9 +723,9 @@ function App() {
                   <label className="block text-sm font-medium text-white">
                     Horário Disponível
                   </label>
-                  <select 
-                    name="horario" 
-                    value={formData.horario} 
+                  <select
+                    name="horario"
+                    value={formData.horario}
                     onChange={handleChange}
                     className="w-full bg-zinc-800 rounded-md px-4 py-3 focus:ring-2 focus:ring-amber-500"
                     required
@@ -751,8 +751,8 @@ function App() {
                   )}
                 </div>
 
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   disabled={loading}
                   className="w-full bg-amber-500 text-black py-3 rounded-md font-semibold hover:bg-amber-600 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
@@ -772,7 +772,7 @@ function App() {
             <div className="max-w-md mx-auto mt-8 bg-zinc-800 p-6 rounded-lg">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xl font-bold">Horários Ocupados - Hoje</h3>
-                <button 
+                <button
                   onClick={() => fetchAgendamentos(true)}
                   className="flex items-center gap-1 text-amber-400 hover:text-amber-300 transition text-sm"
                   title="Atualizar lista"
@@ -781,7 +781,7 @@ function App() {
                   Atualizar
                 </button>
               </div>
-              
+
               {getAgendamentosPorData(getDataAtual()).length === 0 ? (
                 <p className="text-white">Nenhum agendamento para hoje.</p>
               ) : (
@@ -815,7 +815,7 @@ function App() {
             {/* Agendamentos para Amanhã */}
             <div className="max-w-md mx-auto mt-4 bg-zinc-800 p-6 rounded-lg">
               <h3 className="text-xl font-bold mb-4">Horários Ocupados - Amanhã</h3>
-              
+
               {getAgendamentosPorData(
                 new Date(new Date().setDate(new Date().getDate() + 1)).toISOString().split("T")[0]
               ).length === 0 ? (
@@ -878,7 +878,7 @@ function App() {
               <img src="/logo.png" className="h-6 w-6 bg-amber-500 rounded w-6 h-6" />
               <span className="text-xl font-bold">Novo Estilo</span>
             </div>
-            <button 
+            <button
               onClick={() => setMenuOpen(false)}
               className="p-2 hover:bg-zinc-800 rounded-lg transition"
             >
@@ -887,36 +887,36 @@ function App() {
           </div>
 
           <div className="flex flex-col space-y-2 text-lg flex-1">
-            <a 
-              href="#home" 
+            <a
+              href="#home"
               onClick={() => setMenuOpen(false)}
               className="hover:text-amber-500 transition py-4 px-4 hover:bg-zinc-800 rounded-lg border-b border-zinc-700"
             >
               Início
             </a>
-            <a 
-              href="#services" 
+            <a
+              href="#services"
               onClick={() => setMenuOpen(false)}
               className="hover:text-amber-500 transition py-4 px-4 hover:bg-zinc-800 rounded-lg border-b border-zinc-700"
             >
               Serviços
             </a>
-            <a 
-              href="#booking" 
+            <a
+              href="#booking"
               onClick={() => setMenuOpen(false)}
               className="hover:text-amber-500 transition py-4 px-4 hover:bg-zinc-800 rounded-lg border-b border-zinc-700"
             >
               Agendamento
             </a>
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
               onClick={() => setMenuOpen(false)}
               className="hover:text-amber-500 transition py-4 px-4 hover:bg-zinc-800 rounded-lg border-b border-zinc-700"
             >
               Contato
             </a>
-            <a 
-              href="/admin" 
+            <a
+              href="/admin"
               onClick={() => setMenuOpen(false)}
               className="text-amber-500 hover:text-amber-400 transition py-4 px-4 hover:bg-zinc-800 rounded-lg border-b border-zinc-700 font-semibold"
             >
@@ -926,17 +926,17 @@ function App() {
 
           <div className="mt-auto pt-6">
             <div className="flex justify-center space-x-6 mb-4">
-              <a 
-                href="https://www.instagram.com/novoestilobarbeariaes/" 
-                target="_blank" 
+              <a
+                href="https://www.instagram.com/novoestilobarbeariaes/"
+                target="_blank"
                 rel="noreferrer"
                 className="p-3 hover:bg-zinc-800 rounded-lg transition"
               >
                 <Instagram className="h-6 w-6 text-amber-500 hover:text-amber-600" />
               </a>
-              <a 
-                href="https://wa.me/5527997276019" 
-                target="_blank" 
+              <a
+                href="https://wa.me/5527997276019"
+                target="_blank"
                 rel="noreferrer"
                 className="p-3 hover:bg-zinc-800 rounded-lg transition"
               >
