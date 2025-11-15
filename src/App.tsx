@@ -58,12 +58,15 @@ function App() {
     { nome: "Pacote Premium", preco: 90, duracao: "80 min" },
   ];
 
-  // 🔧 FUNÇÕES CORRIGIDAS PARA DATAS E HORÁRIOS
+  // 🔧 FUNÇÕES CORRIGIDAS PARA DATAS
 
   // Obtém a data atual no fuso horário local (YYYY-MM-DD)
   const getDataAtual = (): string => {
     const agora = new Date();
-    return agora.toISOString().split("T")[0];
+    const ano = agora.getFullYear();
+    const mes = (agora.getMonth() + 1).toString().padStart(2, '0');
+    const dia = agora.getDate().toString().padStart(2, '0');
+    return `${ano}-${mes}-${dia}`;
   };
 
   // Obtém a data mínima para agendamento (data atual)
@@ -71,12 +74,17 @@ function App() {
     return getDataAtual();
   };
 
-  // Obtém a data máxima para agendamento (30 dias a partir de hoje)
+  // Obtém a data máxima para agendamento (30 dias a partir de hoje) - CORRIGIDA
   const getDataMaxima = (): string => {
     const agora = new Date();
-    const dataMaxima = new Date(agora);
-    dataMaxima.setDate(agora.getDate() + 30);
-    return dataMaxima.toISOString().split("T")[0];
+    const dataMaxima = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate() + 30);
+    
+    // Formata manualmente para evitar problemas de fuso horário
+    const ano = dataMaxima.getFullYear();
+    const mes = (dataMaxima.getMonth() + 1).toString().padStart(2, '0');
+    const dia = dataMaxima.getDate().toString().padStart(2, '0');
+    
+    return `${ano}-${mes}-${dia}`;
   };
 
   // Função para obter hora atual no formato HH:MM
@@ -213,7 +221,10 @@ function App() {
   const isAmanha = (data: string): boolean => {
     const amanha = new Date();
     amanha.setDate(amanha.getDate() + 1);
-    return data === amanha.toISOString().split("T")[0];
+    const ano = amanha.getFullYear();
+    const mes = (amanha.getMonth() + 1).toString().padStart(2, '0');
+    const dia = amanha.getDate().toString().padStart(2, '0');
+    return data === `${ano}-${mes}-${dia}`;
   };
 
   const formatarData = (data: string): string => {
