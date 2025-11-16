@@ -25,6 +25,9 @@ function Admin() {
 
   // Senha do admin - em produção, use environment variables
   const ADMIN_PASSWORD = 'novoestilo2025#';
+   useEffect(() => {
+    document.title = 'Painel Admin | Barbearia Novo Estilo';
+  }, []);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -46,6 +49,7 @@ function Admin() {
 
       window.addEventListener('storage', handleStorageChange);
       
+
       // Verifica atualizações do localStorage a cada 500ms
       const storageInterval = setInterval(() => {
         const localData = localStorage.getItem('agendamentos');
