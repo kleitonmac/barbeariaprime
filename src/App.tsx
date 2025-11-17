@@ -651,7 +651,8 @@ function App() {
               <div className="mb-6 p-4 bg-blue-900/30 border border-blue-500 rounded-md">
                 <p className="text-blue-300 text-sm font-semibold">
                   <IconBrandMessenger className="inline-block mr-1" />
-                  A agenda é atualizada automaticamente às 20:00 todos os dias de Segunda a Sábado.
+                  Horário de Funcionamento: de segunda a sábado.
+                  Agendamentos disponíveis das 08:00 às 19:00, com intervalo para almoço das 12:00 às 13:00.
                 </p>
                 <p className="text-blue-200 text-xs mt-1">
                   Caso não veja horários disponíveis, tente novamente após esse horário ou entre em contato via WhatsApp.
