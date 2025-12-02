@@ -24,9 +24,9 @@ function Admin() {
   });
 
   // Senha do admin - em produção, use environment variables
-  const ADMIN_PASSWORD = 'novoestilo2025#';
+  const ADMIN_PASSWORD = 'teste123';
   useEffect(() => {
-    document.title = 'Painel Admin | Barbearia Novo Estilo';
+    document.title = 'Painel Admin | Barbearia Prime';
   }, []);
 
   useEffect(() => {
@@ -419,7 +419,7 @@ function Admin() {
       <div className="min-h-screen bg-black text-white flex items-center justify-center">
         <div className="bg-zinc-900 p-8 rounded-lg max-w-md w-full mx-4">
           <div className="flex items-center justify-center mb-6">
-            <img src='/logo.png' className="h-20 w-26 text-amber-500 bg-amber-500 mr-3" />
+            <img src='/logo-prime.png' className="h-20 w-26 text-amber-500 bg-amber-500 mr-3" />
             <h1 className="text-2xl font-bold">Admin Novo Estilo</h1>
           </div>
 
@@ -476,7 +476,7 @@ function Admin() {
 
       {/* Logo e textos centralizados */}
       <div className="flex flex-col items-center space-y-1">
-        <img src="/logoo.png" className="h-12 w-12 rounded-full bg-amber-500" />
+        <img src="/logo-prime.png" className="h-12 w-12 rounded-full bg-amber-500" />
         <h1 className="text-2xl font-bold">Painel Admin</h1>
         <p className="text-white text-sm">
           Gerencie os agendamentos e finanças
@@ -508,7 +508,7 @@ function Admin() {
 
       {/* Logo + Títulos */}
       <div className="flex items-center space-x-3">
-        <img src="/logoo.png" className="h-10 w-10 rounded-full bg-amber-500" />
+        <img src="/logo-prime.png" className="h-10 w-10 rounded-full bg-amber-500" />
         <div>
           <h1 className="text-2xl font-bold">Painel Admin</h1>
           <p className="text-white text-sm">Gerencie os agendamentos e finanças</p>

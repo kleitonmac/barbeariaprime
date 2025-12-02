@@ -362,7 +362,7 @@ function App() {
         `Olá! Vi que o horário ${formData.horario} do dia ${formatarData(formData.data)} está ocupado.` +
         ` Gostaria de verificar outros horários disponíveis para o serviço ${formData.servico}.`
       );
-      const numeroBarbearia = "5527997276019";
+      const numeroBarbearia = "5527981911375";
       window.open(`https://wa.me/${numeroBarbearia}?text=${mensagemConflito}`, "_blank");
       setError("Esse horário já está ocupado. Redirecionando para o WhatsApp do barbeiro para verificar outros horários...");
       setLoading(false);
@@ -444,7 +444,7 @@ function App() {
       `📲 *Link do Agendamento:* https://novoestilo.vercel.app/#booking`
     );
 
-    const numeroBarbearia = "5527997276019";
+    const numeroBarbearia = "5527981911375";
     window.open(`https://wa.me/${numeroBarbearia}?text=${mensagem}`, "_blank");
 
     // Limpa formulário
@@ -535,7 +535,7 @@ function App() {
           <nav className="relative z-30 container mx-auto px-6 py-6 flex justify-between items-center">
             <div className="flex items-center space-x-2">
               <Scissors className="h-8 w-8 text-amber-500" />
-              <span className="text-1xl font-bold">Novo Estilo</span>
+              <span className="text-1xl font-bold">Prime</span>
             </div>
 
             {/* Relógio e Data em tempo real - Desktop */}
@@ -598,7 +598,7 @@ function App() {
               <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
                 Tradição no corte, atitude no estilo.
                 <br />
-                Bem-vindo à Barbearia Novo Estilo!
+                Bem-vindo à Barbearia Prime!
               </h1>
               <p className="text-lg md:text-xl mb-8 text-white">
                 Agende seu horário online e transforme seu visual com a gente!
@@ -883,14 +883,14 @@ function App() {
         <section id="contact" className="py-20 bg-zinc-900 text-center">
           <h2 className="text-3xl font-bold mb-4">Entre em Contato</h2>
           <p className="text-white mb-6">
-            <IconMapPinFilled className="inline-block mr-1" /> Av. Belo Horizonte, 1343 - Nova Carapina I, Serra<br />
-            <IconPhone className="inline-block mr-1" /> (27) 99727-6019
+            <IconMapPinFilled className="inline-block mr-1" /> Av. s/n Serra<br />
+            <IconPhone className="inline-block mr-1" /> (27) 98191-1375
           </p>
           <div className="flex justify-center space-x-8">
-            <a href="https://www.instagram.com/novoestilobarbeariaes/" target="_blank" rel="noreferrer">
+            <a href="https://www.instagram.com/imkleitondev/" target="_blank" rel="noreferrer">
               <Instagram className="h-8 w-8 text-amber-500 hover:text-amber-600 transition" />
             </a>
-            <a href="https://wa.me/5527997276019" target="_blank" rel="noreferrer">
+            <a href="https://wa.me/5527981911375" target="_blank" rel="noreferrer">
               <IconBrandWhatsapp className="h-8 w-8 text-green-500 hover:text-green-600 transition" />
             </a>
           </div>
@@ -902,8 +902,8 @@ function App() {
         <div className="p-6 h-full flex flex-col">
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center gap-2 text-amber-500">
-              <img src="/logo.png" className="h-8 w-8 bg-amber-500 rounded w-8 h-8" />
-              <span className="text-xl font-bold">Novo Estilo</span>
+              <img src="/logo-prime.png" className="h-8 w-8 bg-amber-500 rounded w-8 h-8" />
+              <span className="text-xl font-bold">Prime</span>
             </div>
             <button
               onClick={() => setMenuOpen(false)}
@@ -954,7 +954,7 @@ function App() {
           <div className="mt-auto pt-6">
             <div className="flex justify-center space-x-6 mb-4">
               <a
-                href="https://www.instagram.com/novoestilobarbeariaes/"
+                href="https://www.instagram.com/imkleitondev/"
                 target="_blank"
                 rel="noreferrer"
                 className="p-3 hover:bg-zinc-800 rounded-lg transition"
@@ -962,7 +962,7 @@ function App() {
                 <Instagram className="h-6 w-6 text-amber-500 hover:text-amber-600" />
               </a>
               <a
-                href="https://wa.me/5527997276019"
+                href="https://wa.me/5527981911375"
                 target="_blank"
                 rel="noreferrer"
                 className="p-3 hover:bg-zinc-800 rounded-lg transition"
@@ -970,8 +970,8 @@ function App() {
                 <IconBrandWhatsapp className="h-6 w-6 text-green-500 hover:text-green-600" />
               </a>
             </div>
-            <p className="text-center text-white text-sm"><IconMapPinFilled className="inline-block mr-1" /> Av. Belo Horizonte, 1343 - Nova Carapina I, Serra</p>
-            <p className="text-center text-white text-sm mt-2"><IconPhone className="inline-block mr-1" /> (27) 99727-6019</p>
+            <p className="text-center text-white text-sm"><IconMapPinFilled className="inline-block mr-1" /> Av. s/n, Serra</p>
+            <p className="text-center text-white text-sm mt-2"><IconPhone className="inline-block mr-1" /> (27) 98191-1375</p>
           </div>
         </div>
       </div>
