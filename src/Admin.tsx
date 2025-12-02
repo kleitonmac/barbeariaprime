@@ -25,14 +25,14 @@ function Admin() {
 
   // Senha do admin - em produção, use environment variables
   const ADMIN_PASSWORD = 'novoestilo2025#';
-   useEffect(() => {
+  useEffect(() => {
     document.title = 'Painel Admin | Barbearia Novo Estilo';
   }, []);
 
   useEffect(() => {
     if (isAuthenticated) {
       loadAgendamentos();
-      
+
       // Polling mais frequente para atualizações em tempo real
       const interval = setInterval(() => {
         loadAgendamentos();
@@ -48,7 +48,7 @@ function Admin() {
       };
 
       window.addEventListener('storage', handleStorageChange);
-      
+
 
       // Verifica atualizações do localStorage a cada 500ms
       const storageInterval = setInterval(() => {
@@ -56,18 +56,18 @@ function Admin() {
         if (localData) {
           const parsedData = JSON.parse(localData);
           const currentData = JSON.stringify(agendamentos);
-          
+
           if (currentData !== localData) {
             setAgendamentos(parsedData);
             calcularEstatisticas(parsedData);
           }
         }
       }, 500);
-      
+
       // Adiciona notificação sonora para novos agendamentos
       const audio = new Audio('/notification.mp3');
       let lastAppointmentCount = 0;
-      
+
       const checkNewAppointments = async () => {
         try {
           const response = await fetch('/api/scheduling');
@@ -78,7 +78,7 @@ function Admin() {
             newAppointments.forEach((appointment: Agendamento) => {
               // Toca som de notificação
               audio.play();
-              
+
               // Mostra notificação visual
               const notification = document.createElement('div');
               notification.className = 'bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg transform transition-all duration-500 opacity-0';
@@ -92,7 +92,7 @@ function Admin() {
                   </div>
                 </div>
               `;
-              
+
               const container = document.getElementById('notification-container');
               if (container) {
                 container.appendChild(notification);
@@ -106,7 +106,7 @@ function Admin() {
               }
               // Toca som de notificação
               audio.play();
-              
+
               // Mostra notificação na tela
               if ('Notification' in window && Notification.permission === 'granted') {
                 new Notification('Novo Agendamento!', {
@@ -115,7 +115,7 @@ function Admin() {
                 });
               }
             });
-            
+
             // Atualiza contagem e dashboard
             lastAppointmentCount = data.length;
             setAgendamentos(data);
@@ -125,15 +125,15 @@ function Admin() {
           console.error('Erro ao verificar novos agendamentos:', error);
         }
       };
-      
+
       // Verifica novos agendamentos a cada 3 segundos
       const notificationInterval = setInterval(checkNewAppointments, 3000);
-      
+
       // Solicita permissão para notificações
       if ('Notification' in window && Notification.permission === 'default') {
         Notification.requestPermission();
       }
-      
+
       return () => {
         clearInterval(interval);
         clearInterval(notificationInterval);
@@ -146,20 +146,20 @@ function Admin() {
   const calcularEstatisticas = (agendamentos: Agendamento[]) => {
     const hoje = new Date().toISOString().split('T')[0];
     const mesAtual = hoje.substring(0, 7); // YYYY-MM
-    
+
     const agendamentosHoje = agendamentos.filter(a => a.data === hoje);
     const agendamentosMes = agendamentos.filter(a => a.data.startsWith(mesAtual));
-    
+
     const lucroHoje = agendamentosHoje.reduce((total, a) => total + (a.preco || 0), 0);
     const lucroMensal = agendamentosMes.reduce((total, a) => total + (a.preco || 0), 0);
-    
+
     // Agrupar lucros por dia
     const lucrosPorDia = agendamentosMes.reduce((acc, a) => {
       const dia = a.data;
       acc[dia] = (acc[dia] || 0) + (a.preco || 0);
       return acc;
     }, {} as Record<string, number>);
-    
+
     // Serviços mais populares
     const servicosAgrupados = agendamentosMes.reduce((acc, a) => {
       const servico = a.servico;
@@ -170,7 +170,7 @@ function Admin() {
       acc[servico].lucroTotal += a.preco || 0;
       return acc;
     }, {} as Record<string, { quantidade: number; lucroTotal: number }>);
-    
+
     const servicosMaisPopulares = Object.entries(servicosAgrupados)
       .map(([servico, stats]) => ({
         servico,
@@ -179,10 +179,10 @@ function Admin() {
       }))
       .sort((a, b) => b.quantidade - a.quantidade)
       .slice(0, 5);
-    
+
     const diasComAgendamento = Object.keys(lucrosPorDia).length;
     const mediaDiaria = diasComAgendamento > 0 ? lucroMensal / diasComAgendamento : 0;
-    
+
     setDashboardStats({
       lucroHoje,
       lucroMensal,
@@ -209,7 +209,7 @@ function Admin() {
       const localData = localStorage.getItem('agendamentos');
       const localTimestamp = localStorage.getItem('agendamentosTimestamp');
       const agora = new Date().getTime();
-      
+
       // Verifica se os dados locais existem e têm menos de 24 horas
       if (localData && localTimestamp && (agora - Number(localTimestamp)) < 24 * 60 * 60 * 1000) {
         const parsedData = JSON.parse(localData);
@@ -304,7 +304,7 @@ function Admin() {
     try {
       // Remove o campo _id do objeto que será enviado para atualização
       const { _id, ...updateData } = editForm;
-      
+
       const response = await fetch('/api/scheduling', {
         method: 'PUT',
         headers: {
@@ -319,15 +319,15 @@ function Admin() {
       const result = await response.json();
 
       if (response.ok && result.success) {
-        const updatedAgendamentos = agendamentos.map(a => 
+        const updatedAgendamentos = agendamentos.map(a =>
           a._id === editingId ? { ...result.data } : a
         );
         setAgendamentos(updatedAgendamentos);
-        
+
         // Atualiza localStorage
         localStorage.setItem('agendamentos', JSON.stringify(updatedAgendamentos));
         localStorage.setItem('agendamentosTimestamp', new Date().getTime().toString());
-        
+
         setEditingId(null);
         setEditForm(null);
         alert('Agendamento atualizado com sucesso!');
@@ -357,11 +357,11 @@ function Admin() {
       if (response.ok && result.success) {
         const updatedAgendamentos = agendamentos.filter(a => a._id !== id);
         setAgendamentos(updatedAgendamentos);
-        
+
         // Atualiza localStorage
         localStorage.setItem('agendamentos', JSON.stringify(updatedAgendamentos));
         localStorage.setItem('agendamentosTimestamp', new Date().getTime().toString());
-        
+
         alert('Agendamento excluído com sucesso!');
       } else {
         throw new Error(result.error || 'Erro desconhecido');
@@ -376,7 +376,7 @@ function Admin() {
 
   const handleEditChange = (field: keyof Agendamento, value: string | number) => {
     if (!editForm || field === '_id') return; // Impede modificação do _id
-    
+
     const newForm = { ...editForm, [field]: value };
     setEditForm(newForm);
 
@@ -384,7 +384,7 @@ function Admin() {
     const updatedAgendamentos = agendamentos.map(a =>
       a._id === editingId ? { ...a, [field]: field === 'preco' ? Number(value) || 0 : value } : a
     );
-    
+
     // Atualiza estado e localStorage
     setAgendamentos(updatedAgendamentos);
     calcularEstatisticas(updatedAgendamentos);
@@ -422,7 +422,7 @@ function Admin() {
             <img src='/logo.png' className="h-20 w-26 text-amber-500 bg-amber-500 mr-3" />
             <h1 className="text-2xl font-bold">Admin Novo Estilo</h1>
           </div>
-          
+
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-white mb-2">
@@ -437,7 +437,7 @@ function Admin() {
                 required
               />
             </div>
-            
+
             <button
               type="submit"
               className="w-full bg-amber-500 text-black py-3 rounded-md font-semibold hover:bg-amber-600 transition"
@@ -456,7 +456,7 @@ function Admin() {
               Voltar para o Site
             </a>
           </div>
-          
+
           <p className="text-white text-sm mt-4 text-center">
             Acesso restrito ao barbeiro
           </p>
@@ -468,60 +468,97 @@ function Admin() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Header */}
-      <header className="bg-zinc-900 border-b border-zinc-700">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-3">
-              <img src='/logoo.png' className="h-10 w-10 text-amber-500 bg-amber-500" />
-              <div>
-                <h1 className="text-2xl font-bold">Painel Admin</h1>
-                <p className="text-white text-sm">Gerencie os agendamentos e finanças</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center space-x-4">
-              {/* Botão para voltar ao site principal */}
-              <a
-                href="/"
-                className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md transition"
-              >
-                <Home className="h-7 w-7" />
-                <span>Voltar ao Site</span>
-              </a>
-              
-              <button
-                onClick={handleLogout}
-                className="flex items-center space-x-2 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md transition"
-              >
-                <LogOut className="h-4 w-4" />
-                <span>Sair</span>
-              </button>
-            </div>
-          </div>
+     <header className="bg-zinc-900 border-b border-zinc-700">
+  <div className="container mx-auto px-6 py-4">
+
+    {/* MOBILE: coluna */}
+    <div className="flex flex-col items-center text-center md:hidden space-y-4">
+
+      {/* Logo e textos centralizados */}
+      <div className="flex flex-col items-center space-y-1">
+        <img src="/logoo.png" className="h-12 w-12 rounded-full bg-amber-500" />
+        <h1 className="text-2xl font-bold">Painel Admin</h1>
+        <p className="text-white text-sm">
+          Gerencie os agendamentos e finanças
+        </p>
+      </div>
+
+      {/* Botões ocupando toda largura */}
+      <div className="w-full flex flex-col space-y-3">
+        <a
+          href="/"
+          className="flex items-center justify-center space-x-2 bg-blue-600 hover:bg-blue-700 w-full px-4 py-2 rounded-md transition"
+        >
+          <Home className="h-5 w-5" />
+          <span>Voltar ao Site</span>
+        </a>
+
+        <button
+          onClick={handleLogout}
+          className="flex items-center justify-center space-x-2 bg-red-600 hover:bg-red-700 w-full px-4 py-2 rounded-md transition"
+        >
+          <LogOut className="h-5 w-5" />
+          <span>Sair</span>
+        </button>
+      </div>
+    </div>
+
+    {/* DESKTOP: linha */}
+    <div className="hidden md:flex justify-between items-center">
+
+      {/* Logo + Títulos */}
+      <div className="flex items-center space-x-3">
+        <img src="/logoo.png" className="h-10 w-10 rounded-full bg-amber-500" />
+        <div>
+          <h1 className="text-2xl font-bold">Painel Admin</h1>
+          <p className="text-white text-sm">Gerencie os agendamentos e finanças</p>
         </div>
-      </header>
+      </div>
+
+      {/* Botões */}
+      <div className="flex items-center space-x-3">
+        <a
+          href="/"
+          className="flex items-center justify-center space-x-2 bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md transition"
+        >
+          <Home className="h-5 w-5" />
+          <span>Voltar ao Site</span>
+        </a>
+
+        <button
+          onClick={handleLogout}
+          className="flex items-center justify-center space-x-2 bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md transition"
+        >
+          <LogOut className="h-5 w-5" />
+          <span>Sair</span>
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</header>
+
 
       {/* Tabs */}
       <div className="container mx-auto px-6 pt-6">
         <div className="flex space-x-4 mb-6">
           <button
             onClick={() => setActiveTab('dashboard')}
-            className={`px-6 py-3 rounded-md font-semibold transition flex items-center gap-2 ${
-              activeTab === 'dashboard'
+            className={`px-6 py-3 rounded-md font-semibold transition flex items-center gap-2 ${activeTab === 'dashboard'
                 ? 'bg-amber-500 text-black'
                 : 'bg-zinc-800 text-white hover:bg-zinc-700'
-            }`}
+              }`}
           >
             <TrendingUp className="h-5 w-5" />
             Dashboard
           </button>
           <button
             onClick={() => setActiveTab('agendamentos')}
-            className={`px-6 py-3 rounded-md font-semibold transition flex items-center gap-2 ${
-              activeTab === 'agendamentos'
+            className={`px-6 py-3 rounded-md font-semibold transition flex items-center gap-2 ${activeTab === 'agendamentos'
                 ? 'bg-amber-500 text-black'
                 : 'bg-zinc-800 text-white hover:bg-zinc-700'
-            }`}
+              }`}
           >
             <Calendar className="h-5 w-5" />
             Agendamentos
@@ -594,7 +631,7 @@ function Admin() {
               <TrendingUp className="h-5 w-5 text-amber-500" />
               Lucro por Dia - {new Date().toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}
             </h2>
-            
+
             {Object.keys(dashboardStats.lucrosPorDia).length === 0 ? (
               <p className="text-white text-center py-8">Nenhum agendamento neste mês</p>
             ) : (
@@ -631,14 +668,14 @@ function Admin() {
               <Scissors className="h-5 w-5 text-amber-500" />
               Serviços Mais Populares do Mês
             </h2>
-            
+
             {dashboardStats.servicosMaisPopulares.length === 0 ? (
               <p className="text-white text-center py-8">Nenhum serviço registrado este mês</p>
             ) : (
               <div className="space-y-4">
                 {dashboardStats.servicosMaisPopulares.map((servico) => {
                   const porcentagem = (servico.quantidade / dashboardStats.agendamentosMes) * 100;
-                  
+
                   return (
                     <div key={servico.servico} className="space-y-2">
                       <div className="flex justify-between items-center">
@@ -677,48 +714,48 @@ function Admin() {
             ) : (
               <div className="divide-y divide-zinc-700">
                 {agendamentosOrdenados.slice(0, 5).map((agendamento) => (
-                    <div key={agendamento._id || Math.random()} className="p-4 hover:bg-zinc-800 transition">
-                      <div className="flex justify-between items-center">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-3 mb-2">
-                            <p className="font-semibold text-lg">{agendamento.nome}</p>
-                            <span className="px-2 py-1 text-xs rounded-full bg-amber-500/20 text-amber-500">
-                              {agendamento.servico}
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-4 text-sm text-white">
-                            <div className="flex items-center gap-1">
-                              <Calendar className="h-4 w-4" />
-                              {formatarData(agendamento.data)}
-                            </div>
-                            <div className="flex items-center gap-1">
-                              <Clock className="h-4 w-4" />
-                              {agendamento.horario}
-                            </div>
-                            <div className="flex items-center gap-1 text-green-500">
-                              <DollarSign className="h-4 w-4" />
-                              {formatarMoeda(agendamento.preco || 0)}
-                            </div>
-                          </div>
+                  <div key={agendamento._id || Math.random()} className="p-4 hover:bg-zinc-800 transition">
+                    <div className="flex justify-between items-center">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-2">
+                          <p className="font-semibold text-lg">{agendamento.nome}</p>
+                          <span className="px-2 py-1 text-xs rounded-full bg-amber-500/20 text-amber-500">
+                            {agendamento.servico}
+                          </span>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <button
-                            onClick={() => handleEdit(agendamento)}
-                            className="p-2 text-amber-500 hover:bg-amber-500/20 rounded-lg transition-all"
-                            title="Editar"
-                          >
-                            <Edit className="h-5 w-5" />
-                          </button>
-                          <button
-                            onClick={() => agendamento._id && handleDelete(agendamento._id)}
-                            className="p-2 text-red-500 hover:bg-red-500/20 rounded-lg transition-all"
-                            title="Excluir"
-                          >
-                            <Trash2 className="h-5 w-5" />
-                          </button>
+                        <div className="flex items-center gap-4 text-sm text-white">
+                          <div className="flex items-center gap-1">
+                            <Calendar className="h-4 w-4" />
+                            {formatarData(agendamento.data)}
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Clock className="h-4 w-4" />
+                            {agendamento.horario}
+                          </div>
+                          <div className="flex items-center gap-1 text-green-500">
+                            <DollarSign className="h-4 w-4" />
+                            {formatarMoeda(agendamento.preco || 0)}
+                          </div>
                         </div>
                       </div>
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => handleEdit(agendamento)}
+                          className="p-2 text-amber-500 hover:bg-amber-500/20 rounded-lg transition-all"
+                          title="Editar"
+                        >
+                          <Edit className="h-5 w-5" />
+                        </button>
+                        <button
+                          onClick={() => agendamento._id && handleDelete(agendamento._id)}
+                          className="p-2 text-red-500 hover:bg-red-500/20 rounded-lg transition-all"
+                          title="Excluir"
+                        >
+                          <Trash2 className="h-5 w-5" />
+                        </button>
+                      </div>
                     </div>
+                  </div>
                 ))}
               </div>
             )}
@@ -877,7 +914,7 @@ function Admin() {
                               </select>
                             </div>
                           </div>
-                          
+
                           <div className="flex space-x-3">
                             <button
                               onClick={handleSave}
@@ -920,7 +957,7 @@ function Admin() {
                                 </div>
                               )}
                             </div>
-                            
+
                             <div className="flex flex-wrap gap-4 text-sm text-white">
                               <div className="flex items-center space-x-1">
                                 <Scissors className="h-4 w-4" />
@@ -947,7 +984,7 @@ function Admin() {
                               </div>
                             </div>
                           </div>
-                          
+
                           <div className="flex space-x-2 mt-4 md:mt-0">
                             <button
                               onClick={() => handleEdit(agendamento)}
@@ -979,5 +1016,5 @@ function Admin() {
     </div>
   );
 }
- 
+
 export default Admin; 
