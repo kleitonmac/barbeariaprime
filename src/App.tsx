@@ -441,7 +441,7 @@ function App() {
       `📅 Data: ${formatarData(formData.data)}\n` +
       `⏰ Horário: ${formData.horario}\n` +
       `✅ Confirmação automática via site\n\n` +
-      `📲 *Link do Agendamento:* https://novoestilo.vercel.app/#booking`
+      `📲 *Link do Agendamento:* https://barbeariaprime.vercel.app/`
     );
 
     const numeroBarbearia = "5527981911375";
