@@ -1,6 +1,6 @@
 💈 BarbeariaPrime — Sistema de Agendamento Online
 
-senha do Admin teste123
+Senha do Painel do dashboard : teste123
 
 
 📌 Visão Geral
