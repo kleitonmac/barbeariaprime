@@ -1,128 +1,116 @@
-# Prime Barbearia - Sistema de Agendamento
+💈 BarbeariaPrime — Sistema de Agendamento Online
 
-Sistema completo de agendamento para barbearia com painel administrativo e dashboard de lucros.
 
-## 🚀 Funcionalidades
 
-- ✅ Sistema de agendamento online
-- ✅ Painel administrativo protegido por senha
-- ✅ Dashboard com lucro diário e mensal
-- ✅ Integração com MongoDB para persistência de dados
-- ✅ Interface moderna e responsiva
-- ✅ Deploy pronto para Vercel
 
-## 📋 Pré-requisitos
+📌 Visão Geral
 
-- Node.js 18+ instalado
-- Conta no MongoDB Atlas ou MongoDB local
-- Conta no Vercel para deploy
+BarbeariaPrime é uma aplicação web completa para agendamento de serviços em barbearias, com painel administrativo, dashboard de métricas e persistência de dados em banco NoSQL. O projeto foi desenvolvido com foco em performance, organização de código, escalabilidade e experiência do usuário, utilizando tecnologias modernas do ecossistema JavaScript.
 
-## 🛠️ Instalação
+🌐 Deploy: https://barbeariaprime.vercel.app/ 📦 Repositório: https://github.com/kleitonmac/barbeariaprime
 
-1. Clone o repositório:
-```bash
-git clone <seu-repositorio>
-cd primeshop
-```
+🚀 Funcionalidades
+👥 Cliente
 
-2. Instale as dependências:
-```bash
+Agendamento online de horários
+
+Visualização simples e intuitiva dos serviços
+
+Interface responsiva (desktop e mobile)
+
+🔐 Administrador
+
+Painel administrativo com acesso protegido
+
+Visualização de agendamentos
+
+Dashboard com lucro diário e mensal
+
+Controle e análise de serviços realizados
+
+🧠 Tecnologias Utilizadas
+
+TypeScript — Tipagem estática e segurança no código
+
+React — Construção da interface de usuário
+
+Vite — Bundler rápido para desenvolvimento
+
+MongoDB Atlas — Banco de dados NoSQL na nuvem
+
+Mongoose — Modelagem e comunicação com o banco
+
+Vercel Functions — Back‑end serverless
+
+Vercel — Deploy e CI/CD
+
+CSS / Tailwind (ou similar) — Estilização responsiva
+
+🏗️ Arquitetura do Projeto
+
+Front‑end: SPA em React com componentes reutilizáveis
+
+Back‑end: Funções serverless (API)
+
+Banco de Dados: MongoDB com models estruturados
+
+Deploy: Integração contínua via Vercel
+
+barbeariaprime/
+├── api/              # Funções serverless (Vercel)
+├── models/           # Models do MongoDB (Mongoose)
+├── src/              # Código React (UI)
+├── public/           # Assets estáticos
+├── vercel.json       # Configuração de deploy
+├── package.json
+├── tsconfig.json
+└── README.md
+⚙️ Como Executar Localmente
+
+1️⃣ Clone o repositório
+
+git clone https://github.com/kleitonmac/barbeariaprime.git
+cd barbeariaprime
+
+2️⃣ Instale as dependências
+
 npm install
-```
 
-3. Configure as variáveis de ambiente:
-Crie um arquivo `.env.local` na raiz do projeto:
-```
-MONGODB_URI=mongodb+srv://usuario:senha@cluster.mongodb.net
-MONGODB_DBNAME=barberia
-```
+3️⃣ Crie o arquivo de ambiente .env.local
 
-## 🚀 Deploy no Vercel
+MONGODB_URI=sua_uri_mongodb
+MONGODB_DBNAME=nome_do_banco
 
-### Passo 1: Preparar o Projeto
+4️⃣ Execute o projeto
 
-1. Certifique-se de que todas as dependências estão no `package.json`
-2. Verifique se o arquivo `vercel.json` está configurado corretamente
+npm run dev
 
-### Passo 2: Conectar ao Vercel
+Acesse: http://localhost:5173
 
-1. Acesse [vercel.com](https://vercel.com)
-2. Faça login com sua conta GitHub/GitLab/Bitbucket
-3. Clique em "Add New Project"
-4. Importe seu repositório
+📈 O Que Foi Desenvolvido (Resumo Técnico)
 
-### Passo 3: Configurar Variáveis de Ambiente
+Desenvolvimento full‑stack do zero
 
-No painel do Vercel, vá em Settings > Environment Variables e adicione:
+Criação de API serverless para agendamentos
 
-- **MONGODB_URI**: Sua string de conexão do MongoDB
-  - Exemplo: `mongodb+srv://usuario:senha@cluster.mongodb.net`
-- **MONGODB_DBNAME**: Nome do banco de dados (opcional, padrão: `barberia`)
+Integração com MongoDB Atlas
 
-### Passo 4: Deploy
+Implementação de dashboard financeiro
 
-1. Clique em "Deploy"
-2. Aguarde o processo de build e deploy
-3. Seu site estará disponível em uma URL como `https://seu-projeto.vercel.app`
+Estruturação de projeto escalável
 
-### Passo 5: Verificar Funcionamento
+Deploy completo e configuração de variáveis de ambiente
 
-- Acesse a página principal: `https://seu-projeto.vercel.app`
-- Acesse o painel admin: `https://seu-projeto.vercel.app/admin`
-- Senha padrão: `prime2025#`
+💼 Descrição Pronta para Currículo
 
-## 📁 Estrutura do Projeto
+Desenvolvedor Full‑Stack | Projeto BarbeariaPrime
+Desenvolvimento de uma aplicação web completa para agendamento online de barbearias, utilizando TypeScript, React e Vite no front‑end e API serverless com MongoDB no back‑end. Implementação de painel administrativo com dashboard financeiro, integração com banco de dados NoSQL e deploy contínuo via Vercel. Projeto focado em performance, organização de código e experiência do usuário.
 
-```
-primeshop/
-├── api/
-│   └── scheduling.js          # API Serverless (Vercel)
-├── models/
-│   └── scheduling.ts          # Modelo MongoDB
-├── src/
-│   ├── App.tsx               # Página principal
-│   ├── Admin.tsx             # Painel administrativo
-│   └── MainRouter.tsx        # Roteamento
-├── vercel.json               # Configuração Vercel
-└── package.json              # Dependências
-```
+📸 Screenshots (Opcional)
 
-## 🎯 Funcionalidades do Dashboard
+Adicione imagens da aplicação aqui para valorizar o projeto no GitHub.
 
-- **Lucro Diário**: Soma de todos os serviços realizados hoje
-- **Lucro Mensal**: Soma de todos os serviços do mês atual
-- **Gráfico de Lucros**: Visualização diária dos lucros do mês
-- **Estatísticas**: Total de agendamentos e média diária
+👨‍💻 Autor
 
-## 🔒 Segurança
-
-- Senha do admin configurada em `src/Admin.tsx`
-- Em produção, considere usar variáveis de ambiente para a senha
-- MongoDB com autenticação segura
-
-## 📝 Notas Importantes
-
-1. **MongoDB Atlas**: Certifique-se de configurar o IP whitelist para permitir conexões do Vercel (0.0.0.0/0 para desenvolvimento)
-2. **Preços**: Os preços são salvos automaticamente quando um agendamento é criado
-3. **Dados Antigos**: Agendamentos criados antes da atualização podem não ter preço. Você pode editá-los no painel admin
-
-## 🐛 Solução de Problemas
-
-### Erro 404 na página /admin
-- Verifique se o `vercel.json` está configurado corretamente
-- Certifique-se de que o `MainRouter.tsx` está configurado
-
-### Erro de conexão com MongoDB
-- Verifique as variáveis de ambiente no Vercel
-- Confira a string de conexão do MongoDB
-- Verifique o whitelist de IPs no MongoDB Atlas
-
-### API não funciona
-- Verifique se o arquivo `api/scheduling.js` existe
-- Confirme que o `package.json` tem a dependência `mongoose`
-- Veja os logs no painel do Vercel
-
-## 📞 Suporte
-
-Para dúvidas ou problemas, verifique os logs do Vercel no painel de administração.
-
+Kleiton Santos Macedo
+GitHub: https://github.com/kleitonmac
