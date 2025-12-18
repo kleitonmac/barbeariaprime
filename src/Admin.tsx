@@ -420,7 +420,7 @@ function Admin() {
         <div className="bg-zinc-900 p-8 rounded-lg max-w-md w-full mx-4">
           <div className="flex items-center justify-center mb-6">
             <img src='/logo-prime.png' className="h-20 w-26 text-amber-500 bg-amber-500 mr-3" />
-            <h1 className="text-2xl font-bold">Admin Novo Estilo</h1>
+            <h1 className="text-2xl font-bold">Admin Prime</h1>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-4">
