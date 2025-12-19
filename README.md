@@ -1,114 +1,119 @@
-💈 BarbeariaPrime — Sistema de Agendamento Online
+💈 BarbeariaPrime
+Sistema de Agendamento Online
 
-Senha do Painel do dashboard : teste123
+Projeto Demonstrativo — Barbearia Novo Estilo
 
+🔐 Acesso ao painel administrativo (demo): teste123
 
-📌 Visão Geral
+🌐 Deploy: https://barbeariaprime.vercel.app/
 
-BarbeariaPrime é uma aplicação web completa para agendamento de serviços em barbearias, com painel administrativo, dashboard de métricas e persistência de dados em banco NoSQL. O projeto foi desenvolvido com foco em performance, organização de código, escalabilidade e experiência do usuário, utilizando tecnologias modernas do ecossistema JavaScript.
+📦 Repositório: https://github.com/kleitonmac/barbeariaprime
 
-🌐 Deploy: https://barbeariaprime.vercel.app/ 📦 Repositório: https://github.com/kleitonmac/barbeariaprime
+📌 Visão Geral do Projeto
+
+O BarbeariaPrime é um sistema web full-stack de agendamento online, desenvolvido como projeto demonstrativo para a Barbearia Novo Estilo, com o objetivo de apresentar uma solução digital moderna para automatização de horários, gestão de serviços e análise financeira.
+
+O projeto foi concebido seguindo boas práticas de engenharia de software, priorizando arquitetura escalável, código limpo, performance e excelente experiência do usuário (UX/UI).
+
+🎯 Objetivo do Sistema
+
+Digitalizar o processo de agendamento de serviços
+
+Reduzir conflitos de horários e retrabalho manual
+
+Facilitar a gestão administrativa da barbearia
+
+Disponibilizar métricas financeiras para tomada de decisão
 
 🚀 Funcionalidades
-👥 Cliente
+👤 Área do Cliente
 
-Agendamento online de horários
+Agendamento online de serviços em tempo real
 
-Visualização simples e intuitiva dos serviços
+Visualização clara dos serviços disponíveis
 
-Interface responsiva (desktop e mobile)
+Interface responsiva e otimizada para mobile
 
-🔐 Administrador
+Fluxo de uso simples, focado em conversão
 
-Painel administrativo com acesso protegido
+🔐 Área Administrativa
 
-Visualização de agendamentos
+Autenticação protegida para acesso ao painel
 
-Dashboard com lucro diário e mensal
+Gerenciamento completo de agendamentos
 
-Controle e análise de serviços realizados
+Dashboard financeiro com lucro diário e mensal
 
-🧠 Tecnologias Utilizadas
+Análise dos serviços mais realizados
 
-TypeScript — Tipagem estática e segurança no código
+🧠 Stack Tecnológica
+Front-end
 
-React — Construção da interface de usuário
+TypeScript — Tipagem estática para maior confiabilidade
 
-Vite — Bundler rápido para desenvolvimento
+React — Arquitetura baseada em componentes reutilizáveis
 
-MongoDB Atlas — Banco de dados NoSQL na nuvem
+Vite — Ambiente de desenvolvimento rápido e otimizado
 
-Mongoose — Modelagem e comunicação com o banco
+CSS / Tailwind CSS — Design responsivo e moderno
 
-Vercel Functions — Back‑end serverless
+Back-end
 
-Vercel — Deploy e CI/CD
+Vercel Functions — API serverless escalável
 
-CSS / Tailwind (ou similar) — Estilização responsiva
+MongoDB Atlas — Banco de dados NoSQL em nuvem
 
-🏗️ Arquitetura do Projeto
+Mongoose — Modelagem de dados e validações
 
-Front‑end: SPA em React com componentes reutilizáveis
+DevOps & Deploy
 
-Back‑end: Funções serverless (API)
+Vercel — CI/CD automatizado
 
-Banco de Dados: MongoDB com models estruturados
+Variáveis de ambiente para segurança e portabilidade
 
-Deploy: Integração contínua via Vercel
+🏗️ Arquitetura da Aplicação
+
+SPA (Single Page Application) no front-end
+
+API REST serverless no back-end
+
+Separação clara de responsabilidades (UI, API, Models)
+
+Estrutura preparada para crescimento e manutenção
 
 barbeariaprime/
-├── api/              # Funções serverless (Vercel)
-├── models/           # Models do MongoDB (Mongoose)
-├── src/              # Código React (UI)
+├── api/              # Endpoints serverless (Vercel)
+├── models/           # Schemas e models do MongoDB
+├── src/              # Aplicação React
 ├── public/           # Assets estáticos
-├── vercel.json       # Configuração de deploy
+├── vercel.json       # Configurações de deploy
 ├── package.json
 ├── tsconfig.json
 └── README.md
-⚙️ Como Executar Localmente
 
-1️⃣ Clone o repositório
+📊 Destaques Técnicos
 
-git clone https://github.com/kleitonmac/barbeariaprime.git
-cd barbeariaprime
+Desenvolvimento full-stack do zero
 
-2️⃣ Instale as dependências
+Implementação de API REST serverless
 
-npm install
+Integração segura com MongoDB Atlas
 
-3️⃣ Crie o arquivo de ambiente .env.local
+Criação de dashboard financeiro dinâmico
 
-MONGODB_URI=sua_uri_mongodb
-MONGODB_DBNAME=nome_do_banco
+Aplicação de boas práticas de organização de código
 
-4️⃣ Execute o projeto
+Deploy contínuo com versionamento e ambiente isolado
 
-npm run dev
+📈 Resultados Entregues
 
-Acesse: http://localhost:5173
+Sistema funcional e pronto para produção
 
-📈 O Que Foi Desenvolvido (Resumo Técnico)
+Redução de processos manuais simulados
 
-Desenvolvimento full‑stack do zero
+Melhor visualização financeira do negócio
 
-Criação de API serverless para agendamentos
-
-Integração com MongoDB Atlas
-
-Implementação de dashboard financeiro
-
-Estruturação de projeto escalável
-
-Deploy completo e configuração de variáveis de ambiente
-
-💼 Descrição Pronta para Currículo
-
-Desenvolvedor Full‑Stack | Projeto BarbeariaPrime
-Desenvolvimento de uma aplicação web completa para agendamento online de barbearias, utilizando TypeScript, React e Vite no front‑end e API serverless com MongoDB no back‑end. Implementação de painel administrativo com dashboard financeiro, integração com banco de dados NoSQL e deploy contínuo via Vercel. Projeto focado em performance, organização de código e experiência do usuário.
-
-📸 Screenshots (Opcional)
-
-Adicione imagens da aplicação aqui para valorizar o projeto no GitHub.
+Experiência do usuário fluida e intuitiva
 
 👨‍💻 Autor
 
